@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        
+        let serviceConfiguration = AWSServiceConfiguration(region: .usEast1, credentialsProvider: nil)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
+        
+        
+        
+//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .usEast1, identityPoolId: AWSConstants.COGNITO_POOL_ID)
+//        
+//        let serviceConfiguration = AWSServiceConfiguration(region: .usEast1, credentialsProvider: credentialsProvider)
+//        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
+//        
+//        let userPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: AWSConstants.APP_ID, clientSecret: nil, poolId: AWSConstants.USER_POOL_ID)
+//        AWSCognitoIdentityUserPool.registerCognitoIdentityUserPool(with: userPoolConfiguration, forKey: AWSConstants.USER_POOL_KEY)
+//        
+//        
+//        self.pool = AWSCognitoIdentityUserPool(forKey: AWSConstants.USER_POOL_KEY)
+//        self.pool!.delegate = self
+//        self.user = self.pool!.currentUser()
+        
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
